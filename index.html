@@ -7,5 +7,43 @@
     <center>
       <h1>Hello</h1>
     </center>
+    <script type="module" defer>
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+    import { getFirestore, collection, getDocs } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js';
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyBWRM4yc7JO4bK97yRfJisosVcWCFeUWFQ",
+        authDomain: "capstone-project-iot.firebaseapp.com",
+        databaseURL: "https://capstone-project-iot-default-rtdb.firebaseio.com",
+        projectId: "capstone-project-iot",
+        storageBucket: "capstone-project-iot.appspot.com",
+        messagingSenderId: "55278853914",
+        appId: "1:55278853914:web:f4b4cc9bd29fa8632f56a3"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    /*
+    var n = prompt("Type your name");
+    document.write(name);
+
+    var x = db.ref("Person").push().set({
+        "name" : n
+    });
+*/
+    const citiesCol = collection(db, 'Fish_Types');
+    const citySnapshot = await getDocs(citiesCol);
+    const cityList = citySnapshot.docs.map(doc => doc.data());
+    console.log( cityList);
+    
+    for(var i=0;i<cityList.length;i++){
+        document.getElementsByName("h1")[0].textContent = cityList[i];
+    }
+    
   </body>
 </html>
