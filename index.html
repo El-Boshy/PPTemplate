@@ -25,6 +25,10 @@
         messagingSenderId: "55278853914",
         appId: "1:55278853914:web:f4b4cc9bd29fa8632f56a3"
     };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+      
       
       const appCheck = initializeAppCheck(app, {
         provider: new ReCaptchaV3Provider('6LeqAzEjAAAAAFt0GCgYsA4l1W9bgYjvZdLIvZCo'),
@@ -33,9 +37,7 @@
         // tokens as needed.
         isTokenAutoRefreshEnabled: true
     });
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
+      
     const db = getFirestore(app);
     /*
     var n = prompt("Type your name");
